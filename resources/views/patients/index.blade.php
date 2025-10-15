@@ -25,7 +25,7 @@
                     <td>{{ $patient->date_of_birth }}</td>
                     <td>{{ $patient->gender }}</td>
                     <td>
-                        <a href="#">Lihat</a> |
+                        <a href="/patients/{{ $patient->id }}">Lihat</a> |
                         <a href="/patients/{{ $patient->id }}/edit">Edit</a>
                         <form action="/patients/{{ $patient->id }}" method="POST" style="display:inline;">
                             @csrf

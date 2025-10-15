@@ -50,10 +50,12 @@ class PatientController extends Controller
 
     /**
      * Display the specified resource.
+     * Disebut sebagai Route Model Binding,
+     * Laravel otomatis mencari data Patient berdasarkan ID yang diberikan di URL dan memasukkannya ke dalam parameter $patient.
      */
-    public function show(string $id)
+    public function show(Patient $patient)
     {
-        //
+        return view('patients.show', ['patient' => $patient]);
     }
 
     /**
