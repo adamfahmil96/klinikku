@@ -27,7 +27,7 @@
 
         <div class="visit-history">
             <h2>Riwayat Kunjungan</h2>
-            <button>+ Tambah Kunjungan Baru</button>
+            <a href="/patients/{{ $patient->id }}/visits/create">+ Tambah Kunjungan Baru</a>
             <table>
                 <thead>
                     <tr>
