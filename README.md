@@ -66,6 +66,16 @@ Berikut adalah ringkasan langkah-langkah yang telah diselesaikan dalam pembangun
 2. **Definisi Skema & Foreign Key**: Mendefinisikan struktur tabel `visits` dan membuat `foreign key` (`patient_id`) yang terhubung ke tabel `patients` dengan `onDelete('cascade')`.
 3. **Definisi Relasi Eloquent**: Menambahkan method relasi `hasMany` (di `Patient.php`) dan `belongsTo` (di `Visit.php`) untuk mendefinisikan hubungan "Satu ke Banyak" antara pasien dan kunjungannya.
 
+### Fase 4: Mengelola Data Relasional (CRUD Kunjungan)
+
+1. **Controller & Nested Routes**: Membuat `VisitController` dan mendefinisikan _nested routes_ (`/patients/{patient}/visits/create`) untuk logika yang terikat pada pasien.
+2. **Implementasi Fitur Create**:
+
+- Membuat form tambah kunjungan di `visits/create.blade.php`.
+- Mengisi method `create()` dan `store()` di `VisitController`.
+- Menyimpan data relasional secara elegan menggunakan `$patient->visits()->create($data)`.
+- Berhasil menampilkan kunjungan yang baru ditambahkan secara langsung di halaman detail pasien.
+
 ## Cara Menjalankan Proyek
 
 1. Clone repositori ini:
@@ -108,15 +118,15 @@ cp .env.example .env
 
 ## Rencana Selanjutnya (Next Steps)
 
-- [ ] Mengimplementasikan halaman "Detail Pasien" (`show.blade.php`).
+- [ ] Melengkapi fungsionalitas Update dan Delete untuk data Kunjungan (`Visit`).
 
-- [ ] Menampilkan daftar riwayat kunjungan di halaman detail pasien.
+- [ ] Menambahkan *Flash Messages* (pesan notifikasi) setelah berhasil menambah/mengedit/menghapus data.
 
-- [ ] Membuat fungsionalitas CRUD untuk data Kunjungan (`Visit`).
-
-- [ ] Memperbaiki tampilan UI/UX agar lebih rapi.
+- [ ] Memperbaiki tampilan UI/UX agar lebih rapi menggunakan **Tailwind CSS**.
 
 - [ ] Implementasi sistem otentikasi (Login & Register).
+
+- [ ] Menambah fitur pencarian pasien.
 
 ## Dokumentasi
 
