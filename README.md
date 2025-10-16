@@ -66,15 +66,15 @@ Berikut adalah ringkasan langkah-langkah yang telah diselesaikan dalam pembangun
 2. **Definisi Skema & Foreign Key**: Mendefinisikan struktur tabel `visits` dan membuat `foreign key` (`patient_id`) yang terhubung ke tabel `patients` dengan `onDelete('cascade')`.
 3. **Definisi Relasi Eloquent**: Menambahkan method relasi `hasMany` (di `Patient.php`) dan `belongsTo` (di `Visit.php`) untuk mendefinisikan hubungan "Satu ke Banyak" antara pasien dan kunjungannya.
 
-### Fase 4: Mengelola Data Relasional (CRUD Kunjungan)
+### Fase 4: Mengelola Data Relasional (CRUD Kunjungan Lengkap)
 
-1. **Controller & Nested Routes**: Membuat `VisitController` dan mendefinisikan _nested routes_ (`/patients/{patient}/visits/create`) untuk logika yang terikat pada pasien.
-2. **Implementasi Fitur Create**:
+1. **Controller & Nested Resource Routes**: Membuat `VisitController` dan menggunakan `Route::resource('patients.visits', ...)->shallow()` untuk *routing* yang efisien dan bersih.
+2. **Implementasi Fitur Create**: Berhasil membuat form dan logika untuk menambahkan data kunjungan baru yang terikat pada pasien tertentu.
+3. **Implementasi Fitur Update & Delete**:
 
-- Membuat form tambah kunjungan di `visits/create.blade.php`.
-- Mengisi method `create()` dan `store()` di `VisitController`.
-- Menyimpan data relasional secara elegan menggunakan `$patient->visits()->create($data)`.
-- Berhasil menampilkan kunjungan yang baru ditambahkan secara langsung di halaman detail pasien.
+- Membuat fungsionalitas Update untuk mengedit data kunjungan yang sudah ada, memanfaatkan relasi (`$visit->patient`) di view.
+- Membuat fungsionalitas Delete untuk menghapus data kunjungan langsung dari halaman detail pasien.
+- Dengan ini, modul CRUD untuk Kunjungan telah 100% lengkap.
 
 ## Cara Menjalankan Proyek
 
@@ -118,8 +118,6 @@ cp .env.example .env
 
 ## Rencana Selanjutnya (Next Steps)
 
-- [ ] Melengkapi fungsionalitas Update dan Delete untuk data Kunjungan (`Visit`).
-
 - [ ] Menambahkan *Flash Messages* (pesan notifikasi) setelah berhasil menambah/mengedit/menghapus data.
 
 - [ ] Memperbaiki tampilan UI/UX agar lebih rapi menggunakan **Tailwind CSS**.
@@ -132,8 +130,6 @@ cp .env.example .env
 
 [Tautan ke Percapakan Belajar dengan Gemini](https://g.co/gemini/share/5854fc0e5874)
 
-
 ## Developer
 
 - [@adamfahmil](https://github.com/adamfahmil96)
-

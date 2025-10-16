@@ -34,6 +34,7 @@
                         <th>Tanggal</th>
                         <th>Keluhan</th>
                         <th>Pemeriksaan</th>
+                        <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -42,10 +43,18 @@
                             <td>{{ $visit->visit_date }}</td>
                             <td>{{ $visit->keluhan }}</td>
                             <td>{{ $visit->pemeriksaan }}</td>
+                            <td>
+                                <a href="{{ route('visits.edit', $visit) }}">Edit</a>
+                                <form action="{{ route('visits.destroy', $visit) }}" method="POST" style="display:inline;">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" onclick="return confirm('Yakin ingin menghapus kunjungan ini?')">Hapus</button>
+                                </form>
+                            </td>
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="3">Belum ada riwayat kunjungan.</td>
+                            <td colspan="4">Belum ada riwayat kunjungan.</td>
                         </tr>
                     @endforelse
                 </tbody>

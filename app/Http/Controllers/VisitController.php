@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Patient;
+use App\Models\Visit;
 use Illuminate\Http\Request;
 
 class VisitController extends Controller
@@ -28,5 +29,35 @@ class VisitController extends Controller
 
         // Redirect ke halaman detail pasien setelah menyimpan kunjungan
         return redirect()->route('patients.show', $patient->id);
+    }
+
+    public function edit(Visit $visit, Patient $patient)
+    {
+        return view('visits.edit', ['visit' => $visit, 'patient' => $patient]);
+    }
+
+    public function update(Request $request, Visit $visit)
+    {
+        // Validasi data yang diterima dari form
+        $validatedData = $request->validate([
+            'visit_date' => 'required|date',
+            'keluhan' => 'required|string',
+            'pemeriksaan' => 'required|string',
+        ]);
+
+        // Jika validasi berhasil, perbarui data kunjungan
+        $visit->update($validatedData);
+
+        // Redirect ke halaman detail pasien setelah memperbarui kunjungan
+        return redirect()->route('patients.show', $visit->patient_id);
+    }
+
+    public function destroy(Visit $visit)
+    {
+        $patientId = $visit->patient_id;
+        $visit->delete();
+
+        // Redirect ke halaman detail pasien setelah menghapus kunjungan
+        return redirect()->route('patients.show', $patientId);
     }
 }
