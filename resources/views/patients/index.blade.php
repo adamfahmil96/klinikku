@@ -1,58 +1,62 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.app')
 
-<head>
-    <meta charset="UTF-8">
-    <title>Daftar Pasien - Klinikku</title>
-    <style>
-        /* Anda bisa menambahkan sedikit style di sini nanti */
-    </style>
-</head>
+@section('title', 'Daftar Pasien')
 
-<body>
-    {{-- Cek session "success" sebagai pesan titipan --}}
-    @if (session('success'))
-        <div style="background-color: #d4edda; color: #155724; padding: 10px; border-radius: 5px; margin-bottom: 15px;">
-            {{ session('success') }}
+@section('header', 'Manajemen Pasien')
+
+@section('content')
+    <div class="bg-white shadow-md rounded-lg p-6">
+        {{-- Cek session "success" sebagai pesan titipan --}}
+        @if (session('success'))
+            <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4" role="alert">
+                {{ session('success') }}
+            </div>
+        @endif
+
+        <div class="flex justify-between items-center mb-4">
+            <h2 class="text-2xl font-semibold">Daftar Pasien</h2>
+            <a href="{{ route('patients.create') }}"
+                class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-lg">
+                + Tambah Pasien
+            </a>
         </div>
-    @endif
 
-    <h1>Daftar Pasien</h1>
-    <a href="/patients/create">Tambah Pasien Baru</a>
-    <br><br>
-    <table border="1">
-        <thead>
-            <tr>
-                <th>Nama</th>
-                <th>Tanggal Lahir</th>
-                <th>Jenis Kelamin</th>
-                <th>Aksi</th>
-            </tr>
-        </thead>
-        <tbody>
-            @forelse ($patients as $patient)
-                <tr>
-                    <td>{{ $patient->name }}</td>
-                    <td>{{ $patient->date_of_birth }}</td>
-                    <td>{{ $patient->gender }}</td>
-                    <td>
-                        <a href="/patients/{{ $patient->id }}">Lihat</a> |
-                        <a href="/patients/{{ $patient->id }}/edit">Edit</a>
-                        <form action="/patients/{{ $patient->id }}" method="POST" style="display:inline;">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit"
-                                onclick="return confirm('Yakin ingin menghapus data pasien ini?')">Hapus</button>
-                        </form>
-                    </td>
-                </tr>
-            @empty
-                <tr>
-                    <td colspan="4">Belum ada data pasien.</td>
-                </tr>
-            @endforelse
-        </tbody>
-    </table>
-</body>
-
-</html>
+        <div class="overflow-x-auto">
+            <table class="min-w-full bg-white">
+                <thead class="bg-gray-200">
+                    <tr>
+                        <th class="py-2 px-4 border-b">Nama</th>
+                        <th class="py-2 px-4 border-b">Tanggal Lahir</th>
+                        <th class="py-2 px-4 border-b">Jenis Kelamin</th>
+                        <th class="py-2 px-4 border-b">Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @forelse ($patients as $patient)
+                        <tr class="hover:bg-gray-50">
+                            <td class="py-2 px-4 border-b">{{ $patient->name }}</td>
+                            <td class="py-2 px-4 border-b">{{ $patient->date_of_birth }}</td>
+                            <td class="py-2 px-4 border-b">{{ $patient->gender }}</td>
+                            <td class="py-2 px-4 border-b text-center">
+                                <a href="{{ route('patients.show', $patient) }}"
+                                    class="text-blue-500 hover:text-blue-700 mr-2">Lihat</a>
+                                <a href="{{ route('patients.edit', $patient) }}"
+                                    class="text-yellow-500 hover:text-yellow-700 mr-2">Edit</a>
+                                <form action="{{ route('patients.destroy', $patient) }}" method="POST" class="inline-block">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="text-red-500 hover:text-red-700"
+                                        onclick="return confirm('Apakah Anda yakin ingin menghapus pasien ini?')">Hapus</button>
+                                </form>
+                            </td>
+                        </tr>
+                    @empty
+                        <tr>
+                            <td colspan="4" class="py-4 px-4 text-center text-gray-500">Belum ada data pasien.</td>
+                        </tr>
+                    @endforelse
+                </tbody>
+            </table>
+        </div>
+    </div>
+@endsection
