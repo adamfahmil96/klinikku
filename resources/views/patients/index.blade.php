@@ -1,11 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Daftar Pasien - Klinikku</title>
-    <style>/* Anda bisa menambahkan sedikit style di sini nanti */</style>
+    <style>
+        /* Anda bisa menambahkan sedikit style di sini nanti */
+    </style>
 </head>
+
 <body>
+    {{-- Cek session "success" sebagai pesan titipan --}}
+    @if (session('success'))
+        <div style="background-color: #d4edda; color: #155724; padding: 10px; border-radius: 5px; margin-bottom: 15px;">
+            {{ session('success') }}
+        </div>
+    @endif
+
     <h1>Daftar Pasien</h1>
     <a href="/patients/create">Tambah Pasien Baru</a>
     <br><br>
@@ -30,7 +41,8 @@
                         <form action="/patients/{{ $patient->id }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" onclick="return confirm('Yakin ingin menghapus data pasien ini?')">Hapus</button>
+                            <button type="submit"
+                                onclick="return confirm('Yakin ingin menghapus data pasien ini?')">Hapus</button>
                         </form>
                     </td>
                 </tr>
@@ -42,4 +54,5 @@
         </tbody>
     </table>
 </body>
+
 </html>

@@ -16,6 +16,13 @@
     <div class="container">
         <a href="/patients"><< Kembali ke Daftar Pasien</a>
 
+        {{-- Cek session "success" sebagai pesan titipan --}}
+        @if (session('success'))
+            <div style="background-color: #d4edda; color: #155724; padding: 10px; border-radius: 5px; margin-bottom: 15px;">
+                {{ session('success') }}
+            </div>
+        @endif
+
         <h1>Detail Pasien</h1>
         <div class="patient-details">
             <h3>{{ $patient->name }}</h3>

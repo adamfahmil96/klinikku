@@ -28,7 +28,7 @@ class VisitController extends Controller
         $patient->visits()->create($validatedData);
 
         // Redirect ke halaman detail pasien setelah menyimpan kunjungan
-        return redirect()->route('patients.show', $patient->id);
+        return redirect()->route('patients.show', $patient->id)->with('success', 'Kunjungan baru berhasil ditambahkan.');
     }
 
     public function edit(Visit $visit, Patient $patient)
@@ -49,7 +49,7 @@ class VisitController extends Controller
         $visit->update($validatedData);
 
         // Redirect ke halaman detail pasien setelah memperbarui kunjungan
-        return redirect()->route('patients.show', $visit->patient_id);
+        return redirect()->route('patients.show', $visit->patient_id)->with('success', 'Kunjungan berhasil diperbarui.');
     }
 
     public function destroy(Visit $visit)
@@ -58,6 +58,6 @@ class VisitController extends Controller
         $visit->delete();
 
         // Redirect ke halaman detail pasien setelah menghapus kunjungan
-        return redirect()->route('patients.show', $patientId);
+        return redirect()->route('patients.show', $patientId)->with('success', 'Kunjungan berhasil dihapus.');
     }
 }
