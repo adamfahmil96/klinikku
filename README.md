@@ -76,6 +76,13 @@ Berikut adalah ringkasan langkah-langkah yang telah diselesaikan dalam pembangun
 - Membuat fungsionalitas Delete untuk menghapus data kunjungan langsung dari halaman detail pasien.
 - Dengan ini, modul CRUD untuk Kunjungan telah 100% lengkap.
 
+### Fase 5: Peningkatan UI/UX
+
+1. **Flash Messages**: Menambahkan pesan notifikasi (umpan balik) setelah setiap aksi CRUD berhasil pada kedua modul untuk meningkatkan *user experience*.
+2. **Setup Tailwind CSS v4**: Mengonfigurasi `vite.config.js` dengan plugin `@tailwindcss/vite` untuk setup modern tanpa `tailwind.config.js`.
+3. **Layout Induk (Master Layout)**: Membuat file `layouts/app.blade.php` menggunakan `@yield` untuk menjadi template utama bagi semua halaman.
+4. **Perombakan Total Tampilan**: Menerapkan layout dan *utility class* Tailwind ke **semua halaman** (`index`, `create`, `edit`, `show` untuk Pasien dan Kunjungan) untuk menciptakan tampilan yang konsisten dan profesional.
+
 ## Cara Menjalankan Proyek
 
 1. Clone repositori ini:
@@ -118,11 +125,9 @@ cp .env.example .env
 
 ## Rencana Selanjutnya (Next Steps)
 
-- [ ] Menambahkan *Flash Messages* (pesan notifikasi) setelah berhasil menambah/mengedit/menghapus data.
+- [ ] Implementasi sistem otentikasi (Login & Register) menggunakan **Laravel Breeze** agar hanya admin yang bisa mengelola data.
 
-- [ ] Memperbaiki tampilan UI/UX agar lebih rapi menggunakan **Tailwind CSS**.
-
-- [ ] Implementasi sistem otentikasi (Login & Register).
+- [ ] Melindungi semua rute agar tidak bisa diakses sebelum login.
 
 - [ ] Menambah fitur pencarian pasien.
 
