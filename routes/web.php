@@ -1,36 +1,26 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\VisitController;
+
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('patients', PatientController::class);
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
-/**
- * Karena kunjungan (visits) selalu terkait dengan pasien tertentu,
- * kita bisa menggunakan nested resource untuk mengelola kunjungan pasien.
- */
-// Route untuk menampilkan form tambah kunjungan untuk pasien tertentu
-// UPDATE: Commented out to use resource route with scoped and shallow methods
-// Route::get('patients/{patient}/visits/create', [VisitController::class, 'create']);
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
 
-// Route untuk menyimpan kunjungan baru
-// UPDATE: Commented out to use resource route with scoped and shallow methods
-// Route::post('patients/{patient}/visits', [VisitController::class, 'store']);
+Route::resource('patients', PatientController::class)->middleware('auth');
+Route::resource('patients.visits', VisitController::class)->middleware('auth')->scoped()->shallow();
 
-/**
- * shallow() digunakan agar route untuk edit, update, dan delete kunjungan
- * tidak perlu menyertakan ID pasien, cukup ID kunjungan saja.
- * Ini membuat URL lebih bersih dan mudah diingat.
- * 
- * scoped() digunakan agar route untuk create dan store tetap menyertakan ID pasien.
- * 
- * Perbedaan patients dengan patients.visits adalah:
- * - patients: mengacu pada resource pasien secara umum.
- * - patients.visits: mengacu pada resource kunjungan yang terkait dengan pasien tertentu.
- */
-Route::resource('patients.visits', VisitController::class)->scoped()->shallow();
+require __DIR__.'/auth.php';
