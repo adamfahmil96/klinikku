@@ -83,6 +83,30 @@ Berikut adalah ringkasan langkah-langkah yang telah diselesaikan dalam pembangun
 3. **Layout Induk (Master Layout)**: Membuat file `layouts/app.blade.php` menggunakan `@yield` untuk menjadi template utama bagi semua halaman.
 4. **Perombakan Total Tampilan**: Menerapkan layout dan *utility class* Tailwind ke **semua halaman** (`index`, `create`, `edit`, `show` untuk Pasien dan Kunjungan) untuk menciptakan tampilan yang konsisten dan profesional.
 
+### Fase 6: Keamanan & Otentikasi
+
+1. **Instalasi Laravel Breeze:** Menambahkan sistem otentikasi (Login, Register, Logout) lengkap.
+2. **Perlindungan Rute:** Mengamankan semua rute data (`patients` dan `visits`) menggunakan **middleware `auth`** sehingga tidak bisa diakses sebelum login.
+3. **Integrasi UI Breeze:**
+
+- Menyelesaikan konflik layout dengan memodifikasi `app.blade.php` agar kompatibel dengan *layout* Breeze dan *layout* custom kita.
+- Mengonfigurasi ulang **Tailwind CSS v3** (yang diinstal oleh Breeze) dan mengaktifkan plugin `@tailwindcss/forms` untuk memperbaiki tampilan *form*.
+
+### Fase 7: Integrasi Alur Pengguna & Fitur Tambahan
+
+1. **Alur Login yang Disesuaikan:**
+
+- Mengubah rute `dashboard` agar me-redirect ke halaman `patients.index` sebagai halaman utama setelah login.
+- Memodifikasi `navigation.blade.php` untuk mengubah link "Dashboard" menjadi "Pasien".
+
+2. **Fitur Pencarian:**
+
+- Mengimplementasikan **fitur pencarian** di halaman daftar pasien berdasarkan nama.
+
+3. **UX Polish:**
+
+- Menyempurnakan pesan *empty state* pada tabel pasien untuk membedakan antara "Belum ada data" dan "Pasien tidak ditemukan" saat melakukan pencarian.
+
 ## Cara Menjalankan Proyek
 
 1. Clone repositori ini:
@@ -125,11 +149,11 @@ cp .env.example .env
 
 ## Rencana Selanjutnya (Next Steps)
 
-- [ ] Implementasi sistem otentikasi (Login & Register) menggunakan **Laravel Breeze** agar hanya admin yang bisa mengelola data.
+- [ ] Melakukan *refactoring* dan membersihkan kode.
 
-- [ ] Melindungi semua rute agar tidak bisa diakses sebelum login.
+- [ ] Menambahkan fitur paginasi pada daftar pasien.
 
-- [ ] Menambah fitur pencarian pasien.
+- [ ] Menambahkan *role* pengguna (misal: Admin vs. Staf).
 
 ## Dokumentasi
 
