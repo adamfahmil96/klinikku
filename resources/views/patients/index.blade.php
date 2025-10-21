@@ -21,6 +21,16 @@
             </a>
         </div>
 
+        <div class="mb-4">
+            <form action="{{ route('patients.index') }}" method="GET">
+                <label for="search" class="sr-only">Cari Pasien</label>
+                <input type="text" name="search" id="search" placeholder="Cari berdasarkan nama..."
+                    class="w-full md:w-1/2 px-3 py-2 border border-gray-300 rounded-lg shadow-sm"
+                    value="{{ request('search') }}">
+                <button type="submit" class="ml-2 bg-indigo-600 text-white py-2 px-4 rounded-lg">Cari</button>
+            </form>
+        </div>
+
         <div class="overflow-x-auto">
             <table class="min-w-full bg-white">
                 <thead class="bg-gray-200">
@@ -52,7 +62,13 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="4" class="py-4 px-4 text-center text-gray-500">Belum ada data pasien.</td>
+                            <td colspan="4" class="py-4 px-4 text-center text-gray-500">
+                                @if (request('search'))
+                                    Pasien dengan nama "{{ request('search') }}" tidak ditemukan.
+                                @else
+                                    Belum ada data pasien.
+                                @endif
+                            </td>
                         </tr>
                     @endforelse
                 </tbody>

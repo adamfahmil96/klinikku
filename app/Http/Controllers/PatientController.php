@@ -10,13 +10,23 @@ class PatientController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         // Ambil semua data pasien dari database
-        $patients = Patient::all();
+        // $patients = Patient::all();
 
         // Kembalikan view dengan data pasien
-        return view('patients.index', ['patients' => $patients]);
+        // return view('patients.index', ['patients' => $patients]);
+
+        // Ambil data pasien dengan fitur pencarian
+        $patients = Patient::query();
+        if ($request->filled('search')) { // Cek jika ada parameter pencarian dan ada isinya di request pencarian
+            $search = $request->get('search');
+            $patients->where('name', 'like', '%' . $search . '%');
+        }
+
+        // Kembalikan view dengan data pasien
+        return view('patients.index', ['patients' => $patients->get()]);
     }
 
     /**
