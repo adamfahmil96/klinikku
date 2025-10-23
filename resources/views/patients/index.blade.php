@@ -74,5 +74,11 @@
                 </tbody>
             </table>
         </div>
+
+        {{-- Pagination --}}
+        <div class="mt-4">
+            {{-- Tambahkan query string untuk pagination --}}
+            {{ $patients->withQueryString()->links() }}
+        </div>
     </div>
 @endsection

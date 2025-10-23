@@ -26,7 +26,7 @@ class PatientController extends Controller
         }
 
         // Kembalikan view dengan data pasien
-        return view('patients.index', ['patients' => $patients->get()]);
+        return view('patients.index', ['patients' => $patients->paginate(5)]);
     }
 
     /**
