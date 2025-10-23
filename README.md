@@ -107,6 +107,13 @@ Berikut adalah ringkasan langkah-langkah yang telah diselesaikan dalam pembangun
 
 - Menyempurnakan pesan *empty state* pada tabel pasien untuk membedakan antara "Belum ada data" dan "Pasien tidak ditemukan" saat melakukan pencarian.
 
+4. **Optimalisasi Paginasi:**
+
+- Mengubah query dari .`get()` menjadi `.paginate(10)` untuk optimalisasi performa.
+- Menambahkan link paginasi (`{{ $patients->links() }}`) pada view.
+- Memastikan paginasi tetap berfungsi saat fitur pencarian aktif menggunakan `->withQueryString()`.
+- Mengatur Paginator untuk menggunakan *style* Tailwind via `AppServiceProvider`.
+
 ## Cara Menjalankan Proyek
 
 1. Clone repositori ini:
