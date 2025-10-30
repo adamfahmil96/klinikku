@@ -158,8 +158,6 @@ cp .env.example .env
 
 - [ ] Melakukan *refactoring* dan membersihkan kode.
 
-- [ ] Menambahkan fitur paginasi pada daftar pasien.
-
 - [ ] Menambahkan *role* pengguna (misal: Admin vs. Staf).
 
 ## Dokumentasi
