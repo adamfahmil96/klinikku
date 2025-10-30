@@ -114,6 +114,10 @@ Berikut adalah ringkasan langkah-langkah yang telah diselesaikan dalam pembangun
 - Memastikan paginasi tetap berfungsi saat fitur pencarian aktif menggunakan `->withQueryString()`.
 - Mengatur Paginator untuk menggunakan *style* Tailwind via `AppServiceProvider`.
 
+### Fase 8: Keamanan Data
+
+1. **Soft Deletes:** Mengimplementasikan fitur **Soft Deletes** pada Model Pasien. Ini membuat data tidak terhapus secara permanen (hanya ditandai) dan secara otomatis menyembunyikannya dari semua *query* aplikasi, termasuk pencarian.
+
 ## Cara Menjalankan Proyek
 
 1. Clone repositori ini:
@@ -134,27 +138,35 @@ cd klinikku
 cp .env.example .env
 ```
 
-4. Jalankan container Laravel Sail (proses ini akan mengunduh image Docker jika belum ada):
+4. Jalankan `composer install`.
+
+5. Jalankan container Laravel Sail (proses ini akan mengunduh image Docker jika belum ada):
 
 ```bash
 ./vendor/bin/sail up -d
 ```
 
-5. Generate kunci aplikasi:
+6. Masuk ke dalam container (`docker exec -it <nama_container> bash`), lalu jalankan `npm install`.
+
+7. Generate kunci aplikasi:
 
 ```bash
 ./vendor/bin/sail artisan key:generate
 ```
 
-6. Jalankan migrasi database untuk membuat semua tabel:
+8. Jalankan migrasi database untuk membuat semua tabel:
 
 ```bash
 ./vendor/bin/sail artisan migrate
 ```
 
-7. Aplikasi sekarang dapat diakses di `http://localhost` (disertai port yang ditentukan di `.env`).
+9.  Jalankan `npm run dev` di dalam container.
+
+10. Aplikasi sekarang dapat diakses di `http://localhost` (disertai port yang ditentukan di `.env`).
 
 ## Rencana Selanjutnya (Next Steps)
+
+- [ ] Membuat halaman "Trash" untuk melihat pasien yang terhapus dan menambahkan fitur "Restore".
 
 - [ ] Melakukan *refactoring* dan membersihkan kode.
 
