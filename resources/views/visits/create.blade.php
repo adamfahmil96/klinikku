@@ -18,6 +18,9 @@
                 <input type="date" id="visit_date" name="visit_date"
                     class="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
                     required>
+                @error('visit_date')
+                    <span class="text-red-600 text-sm mt-1">{{ $message }}</span>
+                @enderror
             </div>
             {{-- Baris untuk Keluhan --}}
             <div class="mb-4">
@@ -25,6 +28,9 @@
                 <textarea id="keluhan" name="keluhan" rows="4"
                     class="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
                     required></textarea>
+                @error('keluhan')
+                    <span class="text-red-600 text-sm mt-1">{{ $message }}</span>
+                @enderror
             </div>
             {{-- Baris untuk Pemeriksaan/Tindakan --}}
             <div class="mb-6">
@@ -32,6 +38,9 @@
                 <textarea id="pemeriksaan" name="pemeriksaan" rows="4"
                     class="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
                     required></textarea>
+                @error('pemeriksaan')
+                    <span class="text-red-600 text-sm mt-1">{{ $message }}</span>
+                @enderror
             </div>
             {{-- Tombol Aksi --}}
             <div class="flex items-center gap-x-4">
