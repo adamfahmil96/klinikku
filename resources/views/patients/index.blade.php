@@ -15,6 +15,9 @@
 
         <div class="flex justify-between items-center mb-4">
             <h2 class="text-2xl font-semibold">Daftar Pasien</h2>
+            <a href="{{ route('patients.trash') }}" class="text-sm font-medium text-gray-600 hover:text-gray-900">
+                Lihat Data Terhapus
+            </a>
             <a href="{{ route('patients.create') }}"
                 class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-lg">
                 + Tambah Pasien

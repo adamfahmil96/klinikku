@@ -92,6 +92,8 @@ Berikut adalah ringkasan langkah-langkah yang telah diselesaikan dalam pembangun
 - Menyelesaikan konflik layout dengan memodifikasi `app.blade.php` agar kompatibel dengan *layout* Breeze dan *layout* custom kita.
 - Mengonfigurasi ulang **Tailwind CSS v3** (yang diinstal oleh Breeze) dan mengaktifkan plugin `@tailwindcss/forms` untuk memperbaiki tampilan *form*.
 
+4. **Soft Deletes:** Mengimplementasikan fitur **Soft Deletes** pada Model Pasien. Ini membuat data tidak terhapus secara permanen (hanya ditandai) dan secara otomatis menyembunyikannya dari semua *query* aplikasi, termasuk pencarian.
+
 ### Fase 7: Integrasi Alur Pengguna & Fitur Tambahan
 
 1. **Alur Login yang Disesuaikan:**
@@ -114,9 +116,9 @@ Berikut adalah ringkasan langkah-langkah yang telah diselesaikan dalam pembangun
 - Memastikan paginasi tetap berfungsi saat fitur pencarian aktif menggunakan `->withQueryString()`.
 - Mengatur Paginator untuk menggunakan *style* Tailwind via `AppServiceProvider`.
 
-### Fase 8: Keamanan Data
+5. **Validasi Form:** Menampilkan **pesan error validasi** secara spesifik di bawah setiap *field* pada semua *form*.
 
-1. **Soft Deletes:** Mengimplementasikan fitur **Soft Deletes** pada Model Pasien. Ini membuat data tidak terhapus secara permanen (hanya ditandai) dan secara otomatis menyembunyikannya dari semua *query* aplikasi, termasuk pencarian.
+6. **Fitur "Trash" & "Restore":** Membuat halaman "Trash" untuk melihat pasien yang terhapus dan menambahkan fungsionalitas **Restore** untuk memulihkan data.
 
 ## Cara Menjalankan Proyek
 
@@ -166,7 +168,7 @@ cp .env.example .env
 
 ## Rencana Selanjutnya (Next Steps)
 
-- [ ] Membuat halaman "Trash" untuk melihat pasien yang terhapus dan menambahkan fitur "Restore".
+- [ ] Menerapkan *soft deletes* juga untuk modul Kunjungan.
 
 - [ ] Melakukan *refactoring* dan membersihkan kode.
 

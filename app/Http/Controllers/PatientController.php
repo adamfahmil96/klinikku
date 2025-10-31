@@ -109,4 +109,24 @@ class PatientController extends Controller
         // Redirect ke halaman daftar pasien setelah berhasil menghapus
         return redirect('/patients')->with('success', 'Data pasien berhasil dihapus.');
     }
+
+    /**
+     * Display a listing of the soft-deleted resources.
+     */
+    public function trash()
+    {
+        $trashedPatients = Patient::onlyTrashed()->paginate(10);
+        return view('patients.trash', ['patients' => $trashedPatients]);
+    }
+
+    /**
+     * Restore a soft-deleted resource.
+     */
+    public function restore($id)
+    {
+        $patient = Patient::onlyTrashed()->findOrFail($id);
+        $patient->restore();
+
+        return redirect()->route('patients.trash')->with('success', 'Pasien berhasil dikembalikan.');
+    }
 }
