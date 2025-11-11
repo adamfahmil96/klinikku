@@ -27,13 +27,19 @@ class Patient extends Model
 
     /**
      * Booted method to handle model events.
+     * Fungsi spesial yang dijalankan saat model di-booting (saat aplikasi mulai menggunakan model ini).
      */
     protected static function booted(): void
     {
+        // Sebuah instruksi yang diberikan
         static::deleting(function (Patient $patient) {
             /**
              * Hapus semua kunjungan terkait saat pasien dihapus.
              * Ini akan menjadi SOFT DELETE karena kita menggunakan SoftDeletes pada model Visit.
+             * 
+             * Analogi: "Halo, pasang telingamu! Aku punya tugas penting untukmu.
+             * Dengarkan sebuah event bernama 'deleting' yang terjadi pada model Patient.
+             * 'Deleting' artinya Tepat sebelum seorang pasien dihapus dari database."
              */
             $patient->visits()->delete();
         });

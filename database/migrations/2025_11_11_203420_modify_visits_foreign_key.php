@@ -12,10 +12,23 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('visits', function (Blueprint $table) {
-            // Hapus FK lama
+            /**
+             * Hapus FK lama
+             * 
+             * Analogi 1: Saat kita menghapus seorang pasien, kita tidak ingin
+             * secara otomatis menghapus semua kunjungan terkait (visits).
+             * 
+             * Analogi 2: "Petugas, tolong gunting dulu tali pengikat antara pasien dan kunjungan,
+             * supaya saat pasien dihapus, kunjungan tetap aman dan tidak ikut terhapus."
+             */
             $table->dropForeign(['patient_id']);
 
-            // Tambah FK baru tanpa aksi cascade on delete
+            /**
+             * Tambah FK baru tanpa aksi cascade on delete
+             * 
+             * Analogi: "Sekarang tali pengikatnya sudah terputus, jadi
+             * kalau pasien dihapus, kunjungan tetap aman."
+             */
             $table->foreign('patient_id')->references('id')->on('patients');
         });
     }
