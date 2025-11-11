@@ -24,4 +24,18 @@ class Patient extends Model
     {
         return $this->hasMany(Visit::class);
     }
+
+    /**
+     * Booted method to handle model events.
+     */
+    protected static function booted(): void
+    {
+        static::deleting(function (Patient $patient) {
+            /**
+             * Hapus semua kunjungan terkait saat pasien dihapus.
+             * Ini akan menjadi SOFT DELETE karena kita menggunakan SoftDeletes pada model Visit.
+             */
+            $patient->visits()->delete();
+        });
+    }
 }
