@@ -168,8 +168,6 @@ cp .env.example .env
 
 ## Rencana Selanjutnya (Next Steps)
 
-- [ ] Menerapkan *soft deletes* juga untuk modul Kunjungan.
-
 - [ ] Melakukan *refactoring* dan membersihkan kode.
 
 - [ ] Menambahkan *role* pengguna (misal: Admin vs. Staf).

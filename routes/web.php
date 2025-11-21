@@ -11,8 +11,21 @@ use App\Http\Controllers\VisitController;
  * Siapapun bisa mengakses ini tanpa perlu autentikasi (middleware auth)
  */
 Route::get('/', function () {
-    return view('welcome'); // Mengembalikan view 'welcome', file resources/views/welcome.blade.php
-});
+    // return view('welcome'); // Mengembalikan view 'welcome', file resources/views/welcome.blade.php
+    return view('landing.home');
+})->name('landing.home');
+
+Route::get('/acupuncture', function () {
+    return view('landing.acupuncture');
+})->name('landing.acupuncture');
+
+Route::get('/cupping', function () {
+    return view('landing.cupping');
+})->name('landing.cupping');
+
+Route::get('/contact', function () {
+    return view('landing.contact');
+})->name('landing.contact');
 
 /**
  * Rute /dashboard (bawaan Breeze) yang hanya bisa diakses oleh pengguna yang sudah
