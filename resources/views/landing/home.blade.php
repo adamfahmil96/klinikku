@@ -19,7 +19,7 @@
         </div>
         <div class="relative">
             <!-- Gambar contoh (silakan ganti dengan asset lokal) -->
-            <img src="https://images.unsplash.com/photo-1603354350317-6daefca76413?auto=format&fit=crop&w=900&q=60" alt="Ilustrasi Akupunktur" class="rounded-xl shadow-md object-cover w-full h-72 md:h-80">
+            <img src="{{ asset('images/landing/landing-taylor_heery.webp') }}" alt="Ilustrasi Akupunktur" class="rounded-xl shadow-md object-cover w-full h-72 md:h-80">
             <div class="absolute -bottom-4 -right-4 w-32 h-32 bg-green-200/50 rounded-full blur-2xl"></div>
         </div>
     </div>

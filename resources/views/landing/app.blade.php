@@ -7,6 +7,7 @@
     <title>Acufara - Akupunktur & Bekam</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     @vite('resources/css/app.css')
+    <link rel="icon" href="{{ asset('images/logo/logo-acufara-a-new.png') }}" type="image/png">
 </head>
 
 <body class="bg-[#E7EFE7]">
@@ -73,7 +74,6 @@
                 <ul class="space-y-1">
                     <li>WhatsApp: <a href="https://wa.me/6289517229190" class="text-green-700 hover:underline">0895 1722 9190</a></li>
                     <li>Instagram: <a href="https://www.instagram.com/acufara.akupuntur" class="text-green-700 hover:underline" target="_blank">@acufara.akupuntur</a></li>
-                    <li>Email: <span class="text-gray-500">(tambahkan jika ada)</span></li>
                 </ul>
             </div>
             <div>
