@@ -115,7 +115,7 @@
             }
         });
     </script>
-    <script src="https://kit.fontawesome.com/your-fontawesome-kit.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </body>
 
 </html>
