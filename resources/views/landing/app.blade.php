@@ -10,9 +10,10 @@
 <body class="bg-[#E7EFE7]">
     <header class="bg-white/90 backdrop-blur shadow-sm border-b border-gray-200">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <a href="{{ route('landing.home') }}" class="text-2xl font-semibold tracking-wide text-gray-700 flex items-center gap-2">
-                <span class="inline-block w-8 h-8 rounded-full bg-green-500 text-white flex items-center justify-center font-bold text-sm shadow">A</span>
-                Acufara
+            <a href="{{ route('landing.home') }}" class="flex items-center gap-3 group" aria-label="Beranda Acufara">
+                <img src="{{ asset('images/logo/logo-acufara-new.png') }}" alt="Logo Acufara" class="h-12 w-auto select-none" loading="lazy">
+                <!-- Teks aksesibilitas (tersembunyi) -->
+                <span class="sr-only">Acufara</span>
             </a>
             <nav class="hidden md:flex space-x-6 items-center text-sm font-medium">
                 <a href="{{ route('landing.home') }}" class="text-gray-600 hover:text-gray-800">Home</a>
