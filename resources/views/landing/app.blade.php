@@ -21,7 +21,7 @@
             <nav class="hidden md:flex space-x-6 items-center text-sm font-medium">
                 <a href="{{ route('landing.home') }}" class="text-gray-600 hover:text-gray-800">Home</a>
                 <div class="relative">
-                    <button id="dropdown-btn" class="text-gray-600 hover:text-gray-800 focus:outline-none">
+                    <button id="dropdown-btn" class="text-gray-600 hover:text-gray-800 focus:outline-none font-medium">
                         Layanan <i class="fas fa-chevron-down fa-xs"></i>
                     </button>
                     <div id="dropdown-menu" class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg z-20 hidden">
