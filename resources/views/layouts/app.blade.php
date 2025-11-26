@@ -19,11 +19,11 @@
 <body class="font-sans antialiased bg-gray-100 dark:bg-gray-900">
     <div class="flex h-screen overflow-hidden">
         <!-- Sidebar -->
-        <aside class="w-64 bg-[#0B1120] text-white flex flex-col flex-shrink-0 transition-all duration-300 border-r border-gray-800">
+        <aside class="w-64 bg-[#022c22] text-white flex flex-col flex-shrink-0 transition-all duration-300 border-r border-gray-800">
             <!-- Logo -->
             <div class="p-4 flex items-center h-16 border-b border-gray-800">
                 <a href="{{ route('dashboard') }}" class="flex items-center gap-3 px-2">
-                    <x-application-logo class="block h-8 w-auto fill-current text-green-500" />
+                    <img src="{{ asset('images/logo/logo-acufara-a-new.png') }}" alt="Acufara Logo" class="h-12 w-auto">
                     <span class="text-xl font-bold tracking-wide text-white">Acufara</span>
                 </a>
             </div>
@@ -67,13 +67,13 @@
         <div class="flex-1 flex flex-col overflow-hidden">
             <!-- Header -->
             @if (isset($header))
-            <header class="bg-white dark:bg-gray-800 shadow-sm z-10">
+            <header class="bg-[#E7EFE7] dark:bg-gray-800 shadow-sm z-10">
                 <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                     {{ $header }}
                 </div>
             </header>
             @elseif (View::hasSection('header'))
-            <header class="bg-white shadow-sm z-10">
+            <header class="bg-[#E7EFE7] shadow-sm z-10">
                 <div class="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8">
                     <h1 class="text-2xl font-semibold leading-6 text-gray-800">
                         @yield('header')
@@ -83,7 +83,7 @@
             @endif
 
             <!-- Content Scrollable Area -->
-            <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-50 dark:bg-gray-900 p-6">
+            <main class="flex-1 overflow-x-hidden overflow-y-auto dark:bg-gray-900 p-6 bg-[#c7edc7]">
                 @if (isset($slot))
                 {{ $slot }}
                 @else
